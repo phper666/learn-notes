@@ -1,50 +1,25 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
-  name: "Datawhale开源教程"
-  text: "AI前沿知识开源教程"
-  tagline: 开始学起来吧~
-  image:
-    src: /learning.GIF
-    alt: Datawhale开源教程
+  name: "Learn Notes"
+  text: "技术学习课程站"
+  tagline: 边学边记，持续更新
   actions:
     - theme: brand
-      text: 开始学习
-      link: /chapter1/
+      text: 微服务本地 Debug
+      link: /micro-debug/
+    - theme: alt
+      text: DSH Hull Desktop
+      link: /dsh-hull-desktop/
 
 features:
-  - title: 💥 前沿
-    details: 紧跟技术发展输出最前沿的知识
-  - title: 🎁 免费
-    details: 无任何形式的收费
-  - title: 🌐 开源
-    details: 教程和代码源文件全部托管在GitHub
+  - title: 🔧 微服务本地 Debug
+    details: 微服务架构下的本地调试实践：环境搭建、断点技巧、链路追踪
+    link: /micro-debug/
+    linkText: 进入课程
+  - title: 🖥️ DSH Hull Desktop 学习
+    details: 从快速开始到进阶使用的学习笔记
+    link: /dsh-hull-desktop/
+    linkText: 进入课程
 ---
-<script setup>
-import { VPTeamMembers } from 'vitepress/theme'
-
-const members = [
-  {
-    avatar: 'https://www.github.com/Sm1les.png',
-    name: 'Sm1les',
-    title: '项目负责人',
-    links: [
-      { icon: 'github', link: 'https://github.com/Sm1les' },
-    ]
-  },
-  {
-    avatar: 'https://www.github.com/Sm1les.png',
-    name: '马里奥',
-    title: '核心贡献者',
-    links: [
-      { icon: 'github', link: 'https://github.com/Sm1les' },
-    ]
-  }
-]
-</script>
-
-
-<h2 align="center">Team</h2>
-<VPTeamMembers size="small" :members />

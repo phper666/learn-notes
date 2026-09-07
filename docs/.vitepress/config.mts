@@ -1,25 +1,18 @@
 import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 
-// 1. 获取环境变量并判断
-// 如果环境变量 EDGEONE 等于 '1'，说明在 EdgeOne 环境，使用根路径 '/'
-// 否则默认是 GitHub Pages 环境，使用仓库子路径 '/easy-vecdb/'
-const isEdgeOne = process.env.EDGEONE === '1'
-const baseConfig = isEdgeOne ? '/' : '/repo-template/'
-
 export default defineConfig({
   lang: 'zh-CN',
-  title: "Datawhale开源教程",
-  description: "AI前沿知识开源教程",
-  base: baseConfig,
+  title: 'Learn Notes',
+  description: '个人技术学习课程站',
+  base: '/learn-notes/',
   markdown: {
     math: true
   },
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    logo: '/datawhale-logo.png',
     nav: [
-      { text: 'PDF版本下载', link: 'https://github.com/datawhalechina/repo-template/releases' },
+      { text: '微服务本地 Debug', link: '/micro-debug/' },
+      { text: 'DSH Hull Desktop', link: '/dsh-hull-desktop/' },
     ],
     search: {
       provider: 'local',
@@ -40,31 +33,31 @@ export default defineConfig({
         }
       }
     },
-    sidebar: [
-      {
-        items: [
-          { text: '第1章：第1章的标题', link: '/chapter1/' },
-          { text: '第2章：第2章的标题', 
-            items: [
-              { text: '第2.1节：第2.1节的标题', link: '/chapter2/chapter2_1' },
-              { text: '第2.2节：第2.2节的标题', link: '/chapter2/chapter2_2' }
-            ]
-           }
-        ]
-      }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/datawhalechina/repo-template' }
-    ],
-
-    editLink: {
-      pattern: 'https://github.com/datawhalechina/repo-template/blob/main/docs/:path'
+    sidebar: {
+      '/micro-debug/': [
+        {
+          text: '微服务本地 Debug',
+          items: [
+            { text: '课程简介', link: '/micro-debug/' },
+            { text: '第1章：环境搭建', link: '/micro-debug/01-env' },
+          ]
+        }
+      ],
+      '/dsh-hull-desktop/': [
+        {
+          text: 'DSH Hull Desktop 学习',
+          items: [
+            { text: '课程简介', link: '/dsh-hull-desktop/' },
+            { text: '第1章：快速开始', link: '/dsh-hull-desktop/01-quickstart' },
+          ]
+        }
+      ]
     },
-
-    footer: {
-      message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a> | <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010602202215" rel="noreferrer" target="_blank">京公网安备11010602202215号</a>',
-      copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/phper666/learn-notes' }
+    ],
+    editLink: {
+      pattern: 'https://github.com/phper666/learn-notes/blob/main/docs/:path'
     }
   }
 })
