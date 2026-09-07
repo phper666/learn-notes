@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "技术学习经验"
-  text: "边学边记，沉淀可复用经验"
+  name: "技术手记"
+  text: "边学边记，踩坑沉淀"
   tagline: 技术学习文档 + Playbooks 经验库，持续更新
   actions:
     - theme: brand

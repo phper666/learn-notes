@@ -1,6 +1,6 @@
-# 技术学习经验
+# 技术手记
 
-个人技术学习经验站，基于 [VitePress](https://vitepress.dev) + GitHub Pages 构建。
+个人技术手记（学习文档 + Playbooks 经验库），基于 [VitePress](https://vitepress.dev) + GitHub Pages 构建。
 
 在线阅读：https://phper666.github.io/learn-notes/
 

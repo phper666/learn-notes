@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: '技术学习经验',
-  description: '个人技术学习经验与可复用经验库',
+  title: '技术手记',
+  description: '个人技术手记：学习文档与可复用经验库',
   base: '/learn-notes/',
   markdown: {
     math: true
