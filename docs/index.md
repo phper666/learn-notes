@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "技术手记"
-  text: "边学边记，踩坑沉淀"
-  tagline: 技术学习文档 + Playbooks 经验库，持续更新
+  text: "学过的记下来，踩过的留下来"
+  tagline: 技术学习文档 · Playbooks 经验库 · AI Skills，持续更新
   actions:
     - theme: brand
       text: 微服务本地 Debug
