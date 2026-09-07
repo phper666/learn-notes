@@ -6,8 +6,8 @@
 
 ## 内容
 
-- [微服务本地 Debug](https://phper666.github.io/learn-notes/micro-debug/) — 学习课程
-- [Playbooks 经验库](https://phper666.github.io/learn-notes/playbooks/) — 踩坑记录与可复用经验（迁移自 [phper666/playbooks](https://github.com/phper666/playbooks)）
+- [微服务本地 Debug](https://phper666.github.io/learn-notes/micro-debug/) — 技术学习文档
+- [Playbooks 经验库](https://phper666.github.io/learn-notes/playbooks/) — 踩坑记录与可复用经验，含 AI Agent Skills（迁移自 [phper666/playbooks](https://github.com/phper666/playbooks)）
 
 ## 本地开发
 
@@ -19,9 +19,9 @@ npm run docs:build  # 构建
 
 ## 新增内容
 
-**新课程**：`docs/` 下新建课程目录，在 `docs/.vitepress/config.mts` 的 `nav` 和 `sidebar` 各加一条。
+**新文档**：`docs/` 下新建目录，在 `docs/.vitepress/config.mts` 的 `nav` 和 `sidebar` 各加一条。
 
-**新 Playbook**：`docs/playbooks/<分类>/xxx.md`，在 `config.mts` 的 `/playbooks/` sidebar 和 `docs/playbooks/index.md` 各加一行。
+**新 Playbook**：`docs/playbooks/<分类>/xxx.md`，在 `config.mts` 的 `/playbooks/` sidebar 和 `docs/playbooks/index.md` 各加一行；如需同步 AI Skill，在 `docs/playbooks/skills/` 加对应入口页。
 
 推送 main 分支自动发布。
 

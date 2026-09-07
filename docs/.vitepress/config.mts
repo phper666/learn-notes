@@ -38,7 +38,7 @@ export default defineConfig({
         {
           text: '微服务本地 Debug',
           items: [
-            { text: '课程简介', link: '/micro-debug/' },
+            { text: '文档简介', link: '/micro-debug/' },
             { text: '第1章：环境搭建', link: '/micro-debug/01-env' },
           ]
         }
@@ -77,6 +77,14 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: 'archify 架构图工具', link: '/playbooks/tools/archify' },
+              ]
+            },
+            {
+              text: 'Skills（AI Agent 封装）',
+              collapsed: true,
+              items: [
+                { text: 'Electron 三端打包', link: '/playbooks/skills/packaging' },
+                { text: '发版版本策略', link: '/playbooks/skills/release' },
               ]
             },
           ]

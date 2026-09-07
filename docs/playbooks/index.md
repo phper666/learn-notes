@@ -13,3 +13,6 @@
   - [CI 发版正文组装：后步覆盖前步](./release/release-body-overwrite)
 - **Tools** — 工具
   - [archify — 可验证的架构/流程图生成工具](./tools/archify)
+- **Skills** — AI Agent 封装（skill 入口页，正文链接到上方文档）
+  - [Electron 三端打包](./skills/packaging)
+  - [发版版本策略](./skills/release)
