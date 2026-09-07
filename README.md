@@ -1,13 +1,13 @@
-# Learn Notes
+# 技术学习经验
 
-个人技术学习课程站，基于 [VitePress](https://vitepress.dev) + GitHub Pages 构建。
+个人技术学习经验站，基于 [VitePress](https://vitepress.dev) + GitHub Pages 构建。
 
 在线阅读：https://phper666.github.io/learn-notes/
 
-## 课程
+## 内容
 
-- [微服务本地 Debug](https://phper666.github.io/learn-notes/micro-debug/)
-- [DSH Hull Desktop 学习](https://phper666.github.io/learn-notes/dsh-hull-desktop/)
+- [微服务本地 Debug](https://phper666.github.io/learn-notes/micro-debug/) — 学习课程
+- [Playbooks 经验库](https://phper666.github.io/learn-notes/playbooks/) — 踩坑记录与可复用经验（迁移自 [phper666/playbooks](https://github.com/phper666/playbooks)）
 
 ## 本地开发
 
@@ -17,11 +17,13 @@ npm run docs:dev    # 本地预览 http://localhost:5173
 npm run docs:build  # 构建
 ```
 
-## 新增课程
+## 新增内容
 
-1. 在 `docs/` 下新建课程目录，如 `docs/my-course/`
-2. 在 `docs/.vitepress/config.mts` 的 `nav` 和 `sidebar` 中各加一条
-3. 推送到 main 分支自动发布
+**新课程**：`docs/` 下新建课程目录，在 `docs/.vitepress/config.mts` 的 `nav` 和 `sidebar` 各加一条。
+
+**新 Playbook**：`docs/playbooks/<分类>/xxx.md`，在 `config.mts` 的 `/playbooks/` sidebar 和 `docs/playbooks/index.md` 各加一行。
+
+推送 main 分支自动发布。
 
 ## License
 

@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'Learn Notes',
-  description: '个人技术学习课程站',
+  title: '技术学习经验',
+  description: '个人技术学习经验与可复用经验库',
   base: '/learn-notes/',
   markdown: {
     math: true
@@ -12,7 +12,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '微服务本地 Debug', link: '/micro-debug/' },
-      { text: 'DSH Hull Desktop', link: '/dsh-hull-desktop/' },
+      { text: 'Playbooks', link: '/playbooks/' },
     ],
     search: {
       provider: 'local',
@@ -43,12 +43,42 @@ export default defineConfig({
           ]
         }
       ],
-      '/dsh-hull-desktop/': [
+      '/playbooks/': [
         {
-          text: 'DSH Hull Desktop 学习',
+          text: 'Playbooks · 可复用经验',
           items: [
-            { text: '课程简介', link: '/dsh-hull-desktop/' },
-            { text: '第1章：快速开始', link: '/dsh-hull-desktop/01-quickstart' },
+            { text: '总览', link: '/playbooks/' },
+            {
+              text: 'Debugging',
+              collapsed: true,
+              items: [
+                { text: '高频重渲染吞点击', link: '/playbooks/debugging/rerender-swallow-clicks' },
+              ]
+            },
+            {
+              text: 'Packaging',
+              collapsed: true,
+              items: [
+                { text: 'Electron 三端打包', link: '/playbooks/packaging/electron-crossplatform' },
+                { text: 'macOS 签名与自更新', link: '/playbooks/packaging/macos-code-signing' },
+                { text: '自更新链路接入顺序', link: '/playbooks/packaging/auto-update-onboarding' },
+              ]
+            },
+            {
+              text: 'Release',
+              collapsed: true,
+              items: [
+                { text: 'Semver 三档版本策略', link: '/playbooks/release/semver-strategy' },
+                { text: 'CI 发版正文组装', link: '/playbooks/release/release-body-overwrite' },
+              ]
+            },
+            {
+              text: 'Tools',
+              collapsed: true,
+              items: [
+                { text: 'archify 架构图工具', link: '/playbooks/tools/archify' },
+              ]
+            },
           ]
         }
       ]
