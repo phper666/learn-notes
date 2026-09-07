@@ -5,7 +5,6 @@ import 'viewerjs/dist/viewer.min.css';
 import imageViewer from 'vitepress-plugin-image-viewer';
 import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
 import { useRoute } from 'vitepress';
-import { h } from 'vue';
 
 export default {
     extends: DefaultTheme,
@@ -17,8 +16,5 @@ export default {
         const route = useRoute();
         // 启用插件
         imageViewer(route);
-    },
-    Layout() {
-        return h(DefaultTheme.Layout, null, {})
     }
 } satisfies Theme
