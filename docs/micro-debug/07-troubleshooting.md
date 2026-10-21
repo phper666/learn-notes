@@ -62,7 +62,7 @@ grep com.localdebug "$LOG" | tail -50
 ## 7.7 升级插件后行为异常
 
 - 一律 **Cmd+Q 冷启**，不要用 IDE 的 Restart 按钮。
-- 确认插件已加载：`idea.log` 搜 `Loaded custom plugins` 应包含 `ms-localdebug (1.2.0)`。
+- 确认插件已加载：`idea.log` 搜 `Loaded custom plugins` 应包含 `ms-localdebug (1.0.31)`。
 - 清理缓存不是首选；先看日志与 audit 文件。
 
 ## 7.8 常用日志速查
