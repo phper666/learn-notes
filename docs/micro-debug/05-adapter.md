@@ -58,7 +58,7 @@
 |---|---|
 | `stack` | 可选。非空时只在当前栈名匹配时应用；不匹配直接忽略（日志 info） |
 | `groups` | 只应用 `common` + 当前服务类型（`bff` / `rpc`）；其他组名不会自动应用 |
-| `requires` | 证据门控表达式（`dependency:` / `configKey:` / `stack:` / `class:`），**当前版本不生效** |
+| `requires` | 证据门控（`dependency:` / `configKey:` / `stack:` / `class:`），**ANY：任一命中即应用整组**；评估失败 fail-open（按命中 + audit `evidenceErrors`）；省略 = 恒应用 |
 | `mode` | `inject`：无条件写入（键不存在也创建）；`override`：仅当目标已存在该键时写入。**缺省 `override`** |
 | `keys` | 有序键值表：顺序即写入顺序；值为 `null` 表示**删除**该键（合并时移除）；字符串里的 `${name}` 从上下文取值 |
 | `intents` | 仅用于说明与审计（不参与写入顺序）；`keys` 必须引用 `keys` 中真实存在的路径，否则整包校验失败被忽略 |
@@ -67,6 +67,8 @@
 
 - 组织环境、key 可能只存在于 nacos 而本地 yaml 没有 → 用 `inject`（强制写入本地，覆盖远端值）。
 - 不确定、或希望「只覆盖已存在的键、不发明配置」→ 用 `override`（缺省）。
+
+**`requires` 怎么用（已生效）**：`dependency:*:churchill-*` 扫描项目所有 `pom.xml`（多模块、全文文本匹配）；`configKey:churchill.` 对「项目原始 yaml 键 ∪ 当前组合对象」做前缀匹配；`stack:` 比对当前栈名。没有证据 → 整组跳过，并在 audit 的 `skippedGroups` 记录原因；评估本身失败（如 pom 不可读）→ 按命中处理（fail-open）并记 `evidenceErrors`。
 
 ## 5.4 导入与迁移
 
@@ -216,9 +218,9 @@
 
 ## 5.7 当前版本限制
 
-- **`requires` 未生效**：字段会被解析和校验，但当前版本不做证据判定（下一版启用：按 pom 依赖/配置 key 证据决定是否应用整组）。
 - **无按项目选栈**：初始化/替换/回滚统一使用内置默认栈。
 - **无 UI 编辑**：适配包按 JSON 编辑；模板内联规则也没有表单入口。
+- **证据范围**：依赖证据只扫描项目根内（父级聚合工程/BOM 在根外时不可见）；`configKey` 只读首个 YAML 文档与精确命名的 `application.yaml` / `bootstrap.yaml`。
 - 适配包**只在初始化时应用**；修改后需重新初始化。
 
 ## 5.8 验证是否生效
@@ -227,7 +229,14 @@
 2. `<项目>/.localdebug.audit.json` 中：
 
    ```json
-   "middlewarePatches": { "source": "adapter", "applied": ["common", "bff", "rpc"], "skippedKeys": [] }
+   "middlewarePatches": {
+     "source": "adapter",
+     "applied": ["bff", "rpc"],
+     "skippedGroups": [ { "group": "common", "why": "未命中: dependency:*:churchill-*",
+                          "requires": ["dependency:*:churchill-*"], "rules": ["disable-instance-role-auth"] } ],
+     "skippedKeys": [],
+     "evidenceErrors": []
+   }
    ```
 
 3. 对比初始化前后的 `application.yaml` / `bootstrap.yaml`：应出现适配包 `keys` 里的配置。

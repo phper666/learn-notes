@@ -15,7 +15,12 @@
   "middlewarePatches": {
     "source": "adapter",                 // descriptor | adapter | none
     "applied": ["common", "bff", "rpc"], // 实际应用的补丁分组
-    "skippedKeys": []                    // override 模式下「目标不存在」而跳过的键
+    "skippedGroups": [                   // 证据门控未命中而整组跳过的分组
+      { "group": "common", "why": "未命中: dependency:*:churchill-*",
+        "requires": ["dependency:*:churchill-*"], "rules": ["disable-instance-role-auth"] }
+    ],
+    "skippedKeys": [],                   // override 模式下「目标不存在」而跳过的键
+    "evidenceErrors": []                 // 证据评估失败（fail-open，按命中处理）
   }
 }
 ```
@@ -24,6 +29,8 @@
 - `middlewarePatches.source`：补丁规则来源。`none` = 没有适配包、未做中间件替换。
 - `middlewarePatches.applied`：实际应用的分组（`common` / 服务类型组）。
 - `skippedKeys`：`mode=override` 时目标里不存在的键（正常现象，可据此判断 key 是否写对）。
+- `skippedGroups`：证据门控未命中的整组（含 `requires` 与涉及的 intent id）；外部项目看到 `common` 被跳过属正常。
+- `evidenceErrors`：证据评估失败（fail-open 按命中处理）的记录；为空表示评估正常。
 
 ## 6.2 组织前提确认
 
@@ -36,7 +43,7 @@
 **初始化后**
 
 - [ ] 输出区无「缺少配置字段」/「适配包校验失败」
-- [ ] `.localdebug.audit.json`：`middlewarePatches.source` 符合预期（组织环境应为 `adapter`）
+- [ ] `.localdebug.audit.json`：`middlewarePatches.source` 符合预期（组织环境应为 `adapter`；外部项目 `common` 被 `skippedGroups` 跳过属正常）
 - [ ] `git diff` 检查 `application.yaml` / `bootstrap.yaml`：只出现预期 key
 - [ ] `git status`：`.localdebug*` 与 `project_config_back/` 未进入版本控制（已自动写 `.gitignore`）
 

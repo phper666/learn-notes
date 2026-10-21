@@ -41,8 +41,8 @@
 ## 3.4 启动隧道与本地应用
 
 1. 打开 **调试命令** 页签：列表来自 `.localdebug.ktctl.cmds`，每项可「启动 / 停止」（状态实时刷新）。
-2. 按 `.localdebug.jvmrc.json` 里对应模块的 `mainClass` 找到模块，把 `jvmArgs` 填到 IDEA Run Configuration 的 **VM options**。
-3. 启动本地应用。应用会以独立 tag 注册到集群，网关/上游按 tag 把流量路由到本地实例。
+2. 正常 Run/Debug 启动应用：插件通过 `JavaProgramPatcher` 读取 `.localdebug.jvmrc.json`，按 `mainClass` 匹配后**自动追加 JVM 参数与环境变量**（无需手工填 VM options）。
+3. 应用会以独立 tag 注册到集群，网关/上游按 tag 把流量路由到本地实例。
 
 ## 3.5 回滚
 
