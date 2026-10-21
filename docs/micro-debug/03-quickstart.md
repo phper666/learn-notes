@@ -7,12 +7,13 @@
 1. 打开 **LocalDebug → 项目配置**。
 2. 点右上角 **＋**（添加当前项目）。加入的是 IDEA 当前打开的项目根目录。
 3. 在下拉框中选择要调试的项目。
+4. （可选）在「技术栈」下拉选择该项目使用的栈：默认内置栈；导入/下载的模板会出现在列表里（写入项目 `.localdebug.json` 的 `stackRef`，下次初始化生效）。
 
 > 多模块工程：选择包含 `pom.xml`、且能定位到 `application.yaml` / `bootstrap.yaml` 的工程目录（通常是被调试服务模块或它的父工程）。
 
 ## 3.2 初始化配置
 
-点 **▶ 初始化配置**。插件会：
+点 **▶ 初始化配置**（使用项目配置页所选技术栈；空 = 内置默认栈）。插件会：
 
 1. **备份**：把将要修改的 `application.yaml` / `bootstrap.yaml` / `pom.xml` 备份到
    `<项目>/project_config_back/<hash>/`，并在其中写 `rollbackFilePaths.json`（原文件 ↔ 备份映射）。

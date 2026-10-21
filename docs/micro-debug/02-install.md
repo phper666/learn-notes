@@ -4,7 +4,7 @@
 
 插件以 zip 形式分发（插件市场可上架后改为市场安装）：
 
-- 文件名形如 `ms-localdebug-1.1.0.zip`
+- 文件名形如 `ms-localdebug-1.2.0.zip`
 - 发布页 / 构建产物 `build/distributions/` 获取
 
 ## 2.2 安装
@@ -17,7 +17,7 @@
 
 - IDEA 右侧工具窗口栏出现 **LocalDebug**（在工具窗口栏靠下位置）。
 - 打开后有五个页签：**项目配置 / 调试命令 / 工具安装 / 配置向导 / 环境配置**。
-- `Settings → Plugins → Installed` 里版本为 `1.1.0`。
+- `Settings → Plugins → Installed` 里版本为 `1.2.0`。
 
 ## 2.4 升级与卸载
 

@@ -4,7 +4,7 @@
 
 | 页签 | 职责 | 写入位置 |
 |---|---|---|
-| 项目配置 | 项目列表、初始化/替换/回滚、audit 告警条 | 项目根 `.localdebug.*`、`project_config_back/` |
+| 项目配置 | 项目列表、技术栈下拉、初始化/替换/回滚、audit 告警条 | 项目根 `.localdebug.*`、`project_config_back/` |
 | 调试命令 | 启动/停止隧道命令（ktctl） | 读取 `.localdebug.ktctl.cmds` |
 | 工具安装 | 下载/更新 kubectl、ktctl | `~/.localdebug/bin/` |
 | 配置向导 | 选模板 → 填表单 → 保存平台配置 | `~/.localdebug/config/platform-configs/<栈>.json` + IDE PasswordSafe（密文） |
@@ -26,9 +26,12 @@
 | 字段 | 说明 |
 |---|---|
 | `debugTag` | 路由 tag 覆盖项。初始化时若为空，会写入 OS 用户名并**回写落盘**（之后保持稳定，可手工改） |
+| `stackRef` | 项目级技术栈引用（空 = 内置默认栈）。由项目配置页「技术栈」下拉读写；init/replace/rollback 均按所选栈执行 |
 | `jvmArgs` | 追加到 JVM 启动参数的基础串（`.localdebug.jvmrc.json` 会带上） |
 | `updateDependencies` / `addDependencies` | 初始化时对 pom 的依赖调整（来自依赖模板） |
 | `replaceConfigs` | 初始化生成：每个被替换的配置文件对应一条（服务名/命名空间/tag/nacos 坐标/端口等） |
+
+**技术栈选择**：项目配置页「技术栈」下拉写 `.localdebug.json` 的 `stackRef`。初始化/替换/回滚都按所选栈加载描述符与平台配置 section；空值 = 内置默认栈（老项目零迁移）。导入的模板放在 `~/.localdebug/config/stacks/`，下拉弹出时自动刷新。
 
 ## 4.4 环境配置
 
