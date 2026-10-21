@@ -33,7 +33,7 @@
 ## 4.4 环境配置
 
 - **kubeconfig**：显示路径（默认 `~/.kube/config`），可「编辑 kubeconfig」（打开编辑器）与「测试连接」。失败时若含 `no route to host` 且是 macOS，会提示本地网络权限（见第 1 章）。
-- **规则文件**：直接打开 IDEA 编辑器修改（保存即生效，下次初始化/替换使用）。
+- **规则文件**：`project-rules.json` / `namespace-map.json` 有「编辑」入口（直接打开 IDEA 编辑器，保存即生效，下次初始化/替换使用）；`dependency-template.json` 无 UI 入口，直接编辑 `~/.localdebug/config/dependency-template.json`。
 
 ## 4.5 规则数据（组织数据出包）
 
