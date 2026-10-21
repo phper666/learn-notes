@@ -40,6 +40,12 @@ export default defineConfig({
           items: [
             { text: '文档简介', link: '/micro-debug/' },
             { text: '第1章：环境搭建', link: '/micro-debug/01-env' },
+            { text: '第2章：安装与升级', link: '/micro-debug/02-install' },
+            { text: '第3章：快速开始', link: '/micro-debug/03-quickstart' },
+            { text: '第4章：配置体系', link: '/micro-debug/04-configuration' },
+            { text: '第5章：配置替换适配包', link: '/micro-debug/05-adapter' },
+            { text: '第6章：审计与验证', link: '/micro-debug/06-audit' },
+            { text: '第7章：排障手册', link: '/micro-debug/07-troubleshooting' },
           ]
         }
       ],
