@@ -12,7 +12,7 @@
 
 ## 4.2 配置向导
 
-- **模板**：内置默认栈（Spring Cloud Alibaba + Dubbo + kt-connect）；也可「下载模板」（模板库）或「导入模板文件」（本地 JSON）。
+- **模板**：内置模板（默认通用栈 SC+Nacos；另有组织示例栈 SCA+Dubbo）；也可「下载模板」（模板库）或「导入模板文件」（本地 JSON）。
 - **表单**：由模板里的 `formFields` 声明式渲染；必填项校验不通过不允许保存。
 - **保存**：非密字段写 `~/.localdebug/config/platform-configs/<栈>.json`；密文（AK/SK 等）写 IntelliJ **PasswordSafe**；空值不会清空已有凭据。
 - `tag` 字段**不在向导落盘**：它是「每项目」的覆盖项，落在项目的 `.localdebug.json` 里（见 4.3）。
@@ -26,12 +26,26 @@
 | 字段 | 说明 |
 |---|---|
 | `debugTag` | 路由 tag 覆盖项。初始化时若为空，会写入 OS 用户名并**回写落盘**（之后保持稳定，可手工改） |
-| `stackRef` | 项目级技术栈引用（空 = 内置默认栈）。由项目配置页「技术栈」下拉读写；init/replace/rollback 均按所选栈执行 |
+| `stackRef` | 项目级技术栈引用（默认 = 通用栈；旧项目自动沿用组织示例栈）。由项目配置页「技术栈」下拉读写；init/replace/rollback 均按所选栈执行 |
 | `jvmArgs` | 追加到 JVM 启动参数的基础串（`.localdebug.jvmrc.json` 会带上） |
 | `updateDependencies` / `addDependencies` | 初始化时对 pom 的依赖调整（来自依赖模板） |
 | `replaceConfigs` | 初始化生成：每个被替换的配置文件对应一条（服务名/命名空间/tag/nacos 坐标/端口等） |
 
-**技术栈选择**：项目配置页「技术栈」下拉写 `.localdebug.json` 的 `stackRef`。初始化/替换/回滚都按所选栈加载描述符与平台配置 section；空值 = 内置默认栈（老项目零迁移）。导入的模板放在 `~/.localdebug/config/stacks/`，下拉弹出时自动刷新。
+**技术栈选择**：项目配置页「技术栈」下拉写 `.localdebug.json` 的 `stackRef`。初始化/替换/回滚都按所选栈加载描述符与平台配置 section；默认 = 通用栈；旧项目（已含 `replaceConfigs`）自动沿用组织示例栈并写回 `stackRef`。导入的模板放在 `~/.localdebug/config/stacks/`，下拉弹出时自动刷新。
+
+### 4.3.1 内置默认与用户文件（哪些是通用的）
+
+| 内容 | 提供方 | 默认值 | 你机器上可能看到的内部值 |
+|---|---|---|---|
+| 默认栈 `generic-sc-nacos` | 插件内置 | 通用 SC+Nacos（无 Dubbo/云厂商） | — |
+| 示例栈 `sca-dubbo-ktctl` | 插件内置（示例） | 组织栈示例，默认不启用 | 需要时在「技术栈」选择 |
+| `namespace-map.json` | 用户文件 | `{}`（同名兜底） | 你的：`{}`（已是通用） |
+| `project-rules.json` | 用户文件 | 通用后缀启发式 | 你的：business/storefront/engagement/internal/intranet（内部规则；不用就清空为 `{}`） |
+| `dependency-template.json` | 用户文件 | 不存在 = 不调整 pom | 你的：不存在 |
+| `middleware-patches.json` | 用户文件（可选） | 不存在 = 不做中间件替换 | 你的：churchill/Aliyun 示例（可删） |
+| `stacks/*.json` | 用户文件 | 无 | 你的：`sca-dubbo-ktctl.json` 副本（可删） |
+
+> 初始化只在新项目首次创建 `.localdebug.json`（中性空白），不会覆盖你改过的文件；不再生成 `.localdebug.desc.json`。
 
 ## 4.4 环境配置
 

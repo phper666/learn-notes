@@ -25,7 +25,7 @@
 }
 ```
 
-- `stack`：实际使用的栈名（项目选栈后为所选栈的 `stack` 字段；默认栈为 `sca-dubbo-ktctl`）。
+- `stack`：实际使用的栈名（项目选栈后为所选栈的 `stack` 字段；默认栈为 `generic-sc-nacos`（旧项目可能为 `sca-dubbo-ktctl`））。
 - `prechecks`：组织前提（插件探测不到集群侧状态，只能提示确认，**不代表已验证**）。
 - `middlewarePatches.source`：补丁规则来源。`none` = 没有适配包、未做中间件替换。
 - `middlewarePatches.applied`：实际应用的分组（`common` / 服务类型组）。

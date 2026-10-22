@@ -33,6 +33,7 @@ grep com.localdebug "$LOG" | tail -50
 |---|---|---|
 | 「缺少配置字段: xxx」 | 配置向导没填齐 | 回到配置向导补齐，再初始化 |
 | 「栈描述符加载失败（stackRef=X）」 | 所选栈文件缺失/非法 | 项目配置页「技术栈」改回默认，或重新导入模板 |
+| 默认栈行为与以前不同 | 默认栈已换为通用 SC+Nacos | 旧项目自动沿用组织示例栈；新项目可在「技术栈」选「示例：SCA + Dubbo」 |
 | 「适配包校验失败，忽略」日志 | 适配包 JSON 结构非法（`mode` / `requires` / `intent.keys` 引用不存在） | 按 [第 5 章](./05-adapter) 修正；或先移除适配包验证 |
 | pom 调整失败 | 依赖模板坐标不可用 | 检查 `dependency-template.json`（写 `[]` 可关闭调整） |
 | 未生成 `.localdebug.json` | 项目目录选错（不是工程根） | 重新添加正确的项目根 |
@@ -62,7 +63,7 @@ grep com.localdebug "$LOG" | tail -50
 ## 7.7 升级插件后行为异常
 
 - 一律 **Cmd+Q 冷启**，不要用 IDE 的 Restart 按钮。
-- 确认插件已加载：`idea.log` 搜 `Loaded custom plugins` 应包含 `ms-localdebug (1.0.31)`。
+- 确认插件已加载：`idea.log` 搜 `Loaded custom plugins` 应包含 `ms-localdebug (1.0.32)`。
 - 清理缓存不是首选；先看日志与 audit 文件。
 
 ## 7.8 常用日志速查

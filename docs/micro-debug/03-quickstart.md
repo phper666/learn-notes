@@ -13,7 +13,7 @@
 
 ## 3.2 初始化配置
 
-点 **▶ 初始化配置**（使用项目配置页所选技术栈；空 = 内置默认栈）。插件会：
+点 **▶ 初始化配置**（使用项目配置页所选技术栈；默认通用栈；旧项目自动沿用组织示例栈）。插件会：
 
 1. **备份**：把将要修改的 `application.yaml` / `bootstrap.yaml` / `pom.xml` 备份到
    `<项目>/project_config_back/<hash>/`，并在其中写 `rollbackFilePaths.json`（原文件 ↔ 备份映射）。
