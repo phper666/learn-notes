@@ -14,6 +14,7 @@
 
 - **模板**：内置模板（默认通用栈 SC+Nacos；另有组织示例栈 SCA+Dubbo）；也可「下载模板」（模板库）或「导入模板文件」（本地 JSON）。
 - **表单**：由模板里的 `formFields` 声明式渲染；必填项校验不通过不允许保存。
+- **高级（JSON）**：切到 JSON 视图可直接编辑当前栈的非密 section；保存前校验（JSON object、标量值、必填项），整份覆盖；密文字段不会出现在 JSON 中（始终走表单/PasswordSafe）。未声明 `formFields` 的模板默认进入 JSON 模式。
 - **保存**：非密字段写 `~/.localdebug/config/platform-configs/<栈>.json`；密文（AK/SK 等）写 IntelliJ **PasswordSafe**；空值不会清空已有凭据。
 - `tag` 字段**不在向导落盘**：它是「每项目」的覆盖项，落在项目的 `.localdebug.json` 里（见 4.3）。
 
@@ -51,6 +52,7 @@
 
 - **kubeconfig**：显示路径（默认 `~/.kube/config`），可「编辑 kubeconfig」（打开编辑器）与「测试连接」。失败时若含 `no route to host` 且是 macOS，会提示本地网络权限（见第 1 章）。
 - **规则文件**：`project-rules.json` / `namespace-map.json` 有「编辑」入口（直接打开 IDEA 编辑器，保存即生效，下次初始化/替换使用）；`dependency-template.json` 无 UI 入口，直接编辑 `~/.localdebug/config/dependency-template.json`。
+- **校验配置**：按钮校验已存在的 `project-rules.json` / `namespace-map.json` / `dependency-template.json` / `middleware-patches.json`，弹窗列出每项 OK 或错误明细（适配包结构错误会在这里暴露）。
 
 ## 4.5 规则数据（组织数据出包）
 

@@ -77,6 +77,7 @@
   - 否 → 记录提示标记，不再打扰
 - **想再次导入**：删除 `~/.localdebug/config/.adapter-prompted` 后重新点初始化。
 - **手动安装**：把 5.5 的 JSON 保存为 `~/.localdebug/config/middleware-patches.json` 即可。
+- **手动校验**：环境配置页「校验配置」可在保存前检查适配包结构（mode / requires / intents 引用）。
 - **校验失败**：整包被忽略并在 `idea.log` 打 `WARN`（适配包校验失败，忽略），audit 的 `source` 会是 `none`。
 
 ## 5.5 示例适配包（阿里云实例角色 + churchill）
